@@ -6,24 +6,61 @@ window.onload = function() {
 };
 
 function checkRow1(outerGridId) {
-    // Convert outerGridId to a string and escape if it starts with a number
-    const escapedOuterGridId = outerGridId.id;
-    // Select the three cells in the first row of the specified OuterGrid
-    const cell1 = document.querySelector(`#${escapedOuterGridId}.InnerGrid[data-row="1"][data-col="1"]`);
-    const cell2 = document.querySelector(`#${escapedOuterGridId}.InnerGrid[data-row="1"][data-col="2"]`);
-    const cell3 = document.querySelector(`#${escapedOuterGridId}.InnerGrid[data-row="1"][data-col="3"]`);
+    // console.log(outerGridId)
+    // console.log(document.getElementById(`${outerGridId}.1`))
+    // console.log(document.getElementById(`${outerGridId.id}.1`))
 
-    // Check if the text content of all three cells is the same and not empty
-    if (cell1 && cell2 && cell3 &&
-        cell1.textContent === cell2.textContent &&
-        cell2.textContent === cell3.textContent &&
-        cell1.textContent !== '') {
-        return true; // All cells in the first row are the same
+    // console.log(document.getElementById(`${outerGridId.id}.1`).textContent)
+if (document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.2`).textContent && document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.3`).textContent)
+    
+    if (document.getElementById(`${outerGridId.id}.1`).textContent!=='')
+        return true;
+
+}
+function checkRow2(outerGridId) {
+if (document.getElementById(`${outerGridId.id}.4`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.4`).textContent===document.getElementById(`${outerGridId.id}.6`).textContent)
+    if (document.getElementById(`${outerGridId.id}.4`).textContent!=='')
+        return true;
+
+}
+function checkRow3(outerGridId) {
+    if (document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.8`).textContent && document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.9`).textContent)
+        if (document.getElementById(`${outerGridId.id}.7`).textContent!=='')
+            return true;
+    
     }
 
-    return false; // The cells in the first row are not the same
-}
 
+function checkCol1(outerGridId) {
+        if (document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.4`).textContent && document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.7`).textContent)
+            if (document.getElementById(`${outerGridId.id}.1`).textContent!=='')
+                return true;
+        
+        }
+ function checkCol2(outerGridId) {
+        if (document.getElementById(`${outerGridId.id}.2`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.2`).textContent===document.getElementById(`${outerGridId.id}.8`).textContent)
+            if (document.getElementById(`${outerGridId.id}.2`).textContent!=='')
+                return true;
+        
+        }
+function checkCol3(outerGridId) {
+            if (document.getElementById(`${outerGridId.id}.3`).textContent===document.getElementById(`${outerGridId.id}.6`).textContent && document.getElementById(`${outerGridId.id}.3`).textContent===document.getElementById(`${outerGridId.id}.9`).textContent)
+                if (document.getElementById(`${outerGridId.id}.3`).textContent!=='')
+                    return true;
+            
+            }
+ function checkDia1(outerGridId) {
+        if (document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.9`).textContent)
+            if (document.getElementById(`${outerGridId.id}.1`).textContent!=='')
+                return true;
+        
+        }
+function checkDia2(outerGridId) {
+            if (document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.3`).textContent)
+                if (document.getElementById(`${outerGridId.id}.7`).textContent!=='')
+                    return true;
+            
+            }
 function render() {
     const container = document.getElementById('board');
 
@@ -34,15 +71,11 @@ function render() {
         outerGrid.setAttribute('isComplete','false');   
         console.log(outerGrid);
 
-        for (let row = 1; row <= 3; row++) {
-      
+        for (let num = 1; num <= 9; num++) {
 
-            for (let col = 1; col <= 3; col++) {
                 const innerGrid = document.createElement('div');
                 innerGrid.className = 'InnerGrid';
-                innerGrid.id = `${outerGridId}.${row}.${col}`;
-                innerGrid.dataset.row = row;
-                innerGrid.dataset.col = col;
+                innerGrid.id = `${outerGridId}.${num}`;
                 const elements = document.getElementsByClassName('InnerGrid');
                 innerGrid.textContent='';
                 // Convert the HTMLCollection to an array and add event listeners
@@ -52,7 +85,7 @@ function render() {
 
 
                 outerGrid.appendChild(innerGrid);
-            }
+            
 
         }
 
@@ -81,8 +114,29 @@ function checker(event) {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
         if (checkRow1(outerGridId)) {
             console.log('All cells in row 1 are the same!');
-        } else {
-            console.log('Cells in row 1 are not the same.');
+        } 
+        if (checkRow2(outerGridId)){
+            console.log('All cells in row 2 are the same!');
         }
+        if (checkRow3(outerGridId)){
+            console.log('All cells in row 3 are the same!');
+        }
+        if (checkCol1(outerGridId)) {
+            console.log('All cells in col 1 are the same!');
+        } 
+        if (checkCol2(outerGridId)){
+            console.log('All cells in col 2 are the same!');
+        }
+        if (checkCol3(outerGridId)){
+            console.log('All cells in col 3 are the same!');
+        }
+        if (checkDia1(outerGridId)){
+            console.log('All cells in DIA 1 are the same!');
+        }
+        if (checkDia2(outerGridId)){
+            console.log('All cells in DIA 2 are the same!');
+        }
+
+
     }
 };

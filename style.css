@@ -31,28 +31,23 @@ body {
 }
 
 .OuterGrid {
+
     display: grid;
     background-color: rgba(255, 255, 255, 0.8);
     border: 3px solid rgba(156, 14, 125, 0.8);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     padding: 20px;
     text-align: center;
+    place-items: center;
 }
 
-.InnerGridRow {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-
-}
 
 .InnerGrid {
     cursor: pointer;
-    position: relative;
     background-color: rgba(149, 15, 15, 0.8);
     border: 3px solid rgba(206, 148, 66, 0.8);
-    padding: 2px;
+    padding: 3px;
     display: flex;
     justify-content: center;
     align-items: center;

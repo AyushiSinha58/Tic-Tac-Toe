@@ -41,6 +41,37 @@ body {
     text-align: center;
     place-items: center;
 }
+.OuterGrid.X::after {
+    content: 'X';
+    color: rgba(255, 0, 0, 0.5); /* Red color for X */
+}
+
+.OuterGrid.O::after {
+    content: 'O';
+    color: rgba(0, 0, 255, 0.5); /* Blue color for O */
+}
+.ChecheckBoxWin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.7); 
+    pointer-events: none; 
+    z-index: -1
+} 
+
+.ChecheckBoxWin ::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem; /* Adjust size as needed */
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.7); /* Semi-transparent red for example */
+    pointer-events: none; 
+}
 
 .InnerGrid {
     cursor: pointer;

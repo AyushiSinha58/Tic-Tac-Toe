@@ -118,10 +118,18 @@ function checker(event) {
         if (innerGridId.textContent === '') { // Check if cell is empty
     
             innerGridId.textContent = currentPlayer; // Place the current player's mark
-            if(checkBoxWin(outerGridId)){
+                
+            
+            if(checkBoxWin(outerGridId)) {
                 console.log(`${innerGridId.textContent} wins`)
                 outerGridId.setAttribute('isComplete','true');        
                 console.log(outerGridId)
+                if (currentPlayer === 'X') {
+                    outerGridId.classList.add('X');
+                } else {
+                    outerGridId.classList.add('O');
+                }
+
             }
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
         }

@@ -43,12 +43,30 @@ body {
 }
 .OuterGrid.X::after {
     content: 'X';
-    color: rgba(255, 0, 0, 0.5); /* Red color for X */
+    color: rgba(255, 0, 0, 0.5);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.7); 
+    pointer-events: none; 
+    z-index: 2 /* Red color for X */
 }
 
 .OuterGrid.O::after {
     content: 'O';
-    color: rgba(0, 0, 255, 0.5); /* Blue color for O */
+    color: rgba(0, 0, 255, 0.5);
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba(255, 0, 0, 0.7); 
+    pointer-events: none; 
+    z-index: 2  /* Blue color for O */
 }
 .ChecheckBoxWin {
     position: absolute;

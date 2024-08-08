@@ -100,43 +100,30 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+function checkBoxWin(outerGridId){
+    if (checkRow1(outerGridId)||checkRow2(outerGridId)||checkRow3(outerGridId)|| checkCol1(outerGridId)||checkCol2(outerGridId) ||checkCol3(outerGridId) || checkDia1(outerGridId)||checkDia2(outerGridId) ) {
+        return true;
+    } 
+}
 function checker(event) {
+
     innerGrid=event.target.id;
     console.log(innerGrid);
     outerGridId=event.target.parentElement;
     console.log(outerGridId);
 
     innerGridId=document.getElementById(`${innerGrid}`)
-    console.log(innerGridId.textContent);
-    if (innerGridId.textContent === '') { // Check if cell is empty
-        console.log(innerGridId.textContent);
-        innerGridId.textContent = currentPlayer; // Place the current player's mark
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
-        if (checkRow1(outerGridId)) {
-            console.log('All cells in row 1 are the same!');
-        } 
-        if (checkRow2(outerGridId)){
-            console.log('All cells in row 2 are the same!');
+    console.log(outerGridId.getAttribute('isComplete'))
+    if(outerGridId.getAttribute('isComplete')==='false'){
+        if (innerGridId.textContent === '') { // Check if cell is empty
+    
+            innerGridId.textContent = currentPlayer; // Place the current player's mark
+            if(checkBoxWin(outerGridId)){
+                console.log(`${innerGridId.textContent} wins`)
+                outerGridId.setAttribute('isComplete','true');        
+                console.log(outerGridId)
+            }
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
         }
-        if (checkRow3(outerGridId)){
-            console.log('All cells in row 3 are the same!');
-        }
-        if (checkCol1(outerGridId)) {
-            console.log('All cells in col 1 are the same!');
-        } 
-        if (checkCol2(outerGridId)){
-            console.log('All cells in col 2 are the same!');
-        }
-        if (checkCol3(outerGridId)){
-            console.log('All cells in col 3 are the same!');
-        }
-        if (checkDia1(outerGridId)){
-            console.log('All cells in DIA 1 are the same!');
-        }
-        if (checkDia2(outerGridId)){
-            console.log('All cells in DIA 2 are the same!');
-        }
-
-
     }
 };

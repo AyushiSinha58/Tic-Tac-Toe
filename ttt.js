@@ -1,6 +1,6 @@
 
 let currentPlayer = 'X';
-
+let validBox = 0;
 window.onload = function() {
     render();
 };
@@ -76,19 +76,10 @@ function render() {
                 const innerGrid = document.createElement('div');
                 innerGrid.className = 'InnerGrid';
                 innerGrid.id = `${outerGridId}.${num}`;
-                const elements = document.getElementsByClassName('InnerGrid');
                 innerGrid.textContent='';
-                // Convert the HTMLCollection to an array and add event listeners
-                Array.from(elements).forEach(element => {
-                    element.addEventListener('click', checker);
-                });
-
-
+                innerGrid.addEventListener('click', checker);
                 outerGrid.appendChild(innerGrid);
-            
-
-        }
-
+            }
         container.appendChild(outerGrid);
     }
 }
@@ -105,21 +96,46 @@ function checkBoxWin(outerGridId){
         return true;
     } 
 }
+function isBoxValid(boxId){
+    if (validBox!==0){    
+        if (document.getElementById(validBox).getAttribute('isComplete')==="true"){
+            console.log(1);
+            validBox=0;
+            console.log(`validBox id${validBox}`)
+        }
+    }
+    if(validBox===0 && document.getElementById(boxId).getAttribute('isComplete')==="false"){
+        return true;
+        console.log(2);
+
+    }
+    if (boxId===validBox && document.getElementById(boxId).getAttribute('isComplete')==="false"){
+        return true;
+    }
+    else
+    { 
+        console.log("here");
+        return false;
+
+    }
+}
 function checker(event) {
 
     innerGrid=event.target.id;
-    console.log(innerGrid);
+    //console.log('innerGrid');
+    //console.log(innerGrid);
     outerGridId=event.target.parentElement;
-    console.log(outerGridId);
+    //console.log(outerGridId);
 
     innerGridId=document.getElementById(`${innerGrid}`)
     console.log(outerGridId.getAttribute('isComplete'))
-    if(outerGridId.getAttribute('isComplete')==='false'){
-        if (innerGridId.textContent === '') { // Check if cell is empty
+ 
+        if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
     
             innerGridId.textContent = currentPlayer; // Place the current player's mark
-                
-            
+            validBox=innerGrid.slice(2);  
+            console.log("validbox")
+            console.log(validBox);
             if(checkBoxWin(outerGridId)) {
                 console.log(`${innerGridId.textContent} wins`)
                 outerGridId.setAttribute('isComplete','true');        
@@ -134,4 +150,4 @@ function checker(event) {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
         }
     }
-};
+;

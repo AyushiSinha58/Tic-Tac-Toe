@@ -92,12 +92,14 @@ document.addEventListener('keydown', function(event) {
 });
 
 function checkBoxWin(outerGridId){
-    if (checkRow1(outerGridId)||checkRow2(outerGridId)||checkRow3(outerGridId)|| checkCol1(outerGridId)||checkCol2(outerGridId) ||checkCol3(outerGridId) || checkDia1(outerGridId)||checkDia2(outerGridId) ) {
+    if (checkRow1(outerGridId)||checkRow2(outerGridId)||checkRow3(outerGridId)|| 
+    checkCol1(outerGridId)||checkCol2(outerGridId) ||checkCol3(outerGridId) || 
+    checkDia1(outerGridId)||checkDia2(outerGridId) ) {
         return true;
-    } 
+    }
 }
 function isBoxValid(boxId){
-    if (validBox!==0){    
+    if (validBox!==0){
         if (document.getElementById(validBox).getAttribute('isComplete')==="true"){
             console.log(1);
             validBox=0;
@@ -113,41 +115,50 @@ function isBoxValid(boxId){
         return true;
     }
     else
-    { 
+    {
         console.log("here");
         return false;
 
     }
 }
+
 function checker(event) {
+    innerGrid = event.target.id;
+    console.log('innerGrid');
+    console.log(innerGrid);
+    outerGridId = event.target.parentElement;
+    console.log(outerGridId);
 
-    innerGrid=event.target.id;
-    //console.log('innerGrid');
-    //console.log(innerGrid);
-    outerGridId=event.target.parentElement;
-    //console.log(outerGridId);
-
-    innerGridId=document.getElementById(`${innerGrid}`)
+    innerGridId = document.getElementById(`${innerGrid}`)
     console.log(outerGridId.getAttribute('isComplete'))
- 
-        if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
-    
-            innerGridId.textContent = currentPlayer; // Place the current player's mark
-            validBox=innerGrid.slice(2);  
-            console.log("validbox")
-            console.log(validBox);
-            if(checkBoxWin(outerGridId)) {
-                console.log(`${innerGridId.textContent} wins`)
-                outerGridId.setAttribute('isComplete','true');        
-                console.log(outerGridId)
-                if (currentPlayer === 'X') {
-                    outerGridId.classList.add('X');
-                } else {
-                    outerGridId.classList.add('O');
-                }
 
+    if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
+        innerGridId.textContent = currentPlayer; // Place the current player's mark
+        validBox = innerGrid.slice(2);
+        console.log("validBox")
+        console.log(validBox);
+        
+        if (checkBoxWin(outerGridId)) {
+            console.log(`${innerGridId.textContent} wins`)
+            outerGridId.setAttribute('isComplete', 'true');
+            console.log(outerGridId)
+            
+            if (currentPlayer === 'X') {
+                outerGridId.classList.add('X');
+            } else {
+                outerGridId.classList.add('O');
             }
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
+
+            // Add grey out class to all inner grids in the completed outer grid
+            const innerGrids = outerGridId.querySelectorAll('.InnerGrid');
+            innerGrids.forEach(cell => {
+                cell.classList.add('isBlocked');
+            });
+
+            
+
         }
+        
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
     }
-;
+}

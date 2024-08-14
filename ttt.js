@@ -107,7 +107,6 @@ function isBoxValid(boxId){
     }
     if(validBox===0 && document.getElementById(boxId).getAttribute('isComplete')==="false"){
         return true;
-        console.log(2);
 
     }
     if (boxId===validBox && document.getElementById(boxId).getAttribute('isComplete')==="false"){
@@ -121,10 +120,23 @@ function isBoxValid(boxId){
     }
 }
 function blockInvalidBoxes(validBox) {
-    const boxes = document.querySelectorAll('.OuterGrid'); // Assuming .OuterGrid is the class for the grid boxes
-
+    const boxes = document.querySelectorAll('.OuterGrid'); 
+    console.log("is compplete")
+    console.log(document.getElementById(validBox).getAttribute("isComplete"))
     boxes.forEach(box => {
-        if (box.id !== validBox) {
+        if (document.getElementById(validBox).getAttribute("isComplete")==="true"){
+            console.log(9999999999)
+            const a = document.querySelectorAll('.OuterGrid');
+               a.forEach(b => {
+                   b.classList.remove('isBlocked');
+                    
+             });
+        
+        }
+
+        else if (box.id !== validBox) {
+            console.log(1234556666)
+
             box.classList.add('isBlocked');
         } else {
             box.classList.remove('isBlocked');
@@ -144,13 +156,20 @@ function checker(event) {
     if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
         innerGridId.textContent = currentPlayer; // Place the current player's mark
         validBox = innerGrid.slice(2);
-        blockInvalidBoxes(validBox);
         console.log("validBox")
         console.log(validBox);
         console.log(outerGridId)
         if (checkBoxWin(outerGridId)) {
-
-          
+            // if (outerGridId.id=validBox){
+            //     const boxes = document.querySelectorAll('.OuterGrid');
+            //     boxes.forEach(box => {
+              
+            //             box.classList.remove('isBlocked');
+                    
+            //     });
+            // }
+      
+        
             outerGridId.setAttribute('isComplete', 'true');
             console.log(outerGridId)
             
@@ -169,7 +188,8 @@ function checker(event) {
             
 
         }
-        
+        blockInvalidBoxes(validBox);
+
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
     }
 }

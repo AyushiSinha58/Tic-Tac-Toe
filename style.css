@@ -126,6 +126,11 @@ body {
     color: rgba(17, 42, 46, 0.5); 
 }
 
+.OuterGrid.isBlocked {
+    background-color: black; 
+    pointer-events: none; 
+    color: rgba(17, 42, 46, 0.5); 
+}
 .InnerGrid.validBox {
     transition: background-color 200ms ease-in-out;
     background-color: rgba(255, 0, 153, 0.87);

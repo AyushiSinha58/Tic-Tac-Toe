@@ -5,62 +5,67 @@ window.onload = function() {
     render();
 };
 
-function checkRow1(outerGridId) {
-    // console.log(outerGridId)
-    // console.log(document.getElementById(`${outerGridId}.1`))
-    // console.log(document.getElementById(`${outerGridId.id}.1`))
 
-    // console.log(document.getElementById(`${outerGridId.id}.1`).textContent)
-if (document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.2`).textContent && document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.3`).textContent)
-    
-    if (document.getElementById(`${outerGridId.id}.1`).textContent!=='')
-        return true;
+function checkGameWin() {
+    const winningCombinations = [
+        [1, 2, 3], [4, 5, 6], [7, 8, 9], // Rows
+        [1, 4, 7], [2, 5, 8], [3, 6, 9], // Columns
+        [1, 5, 9], [3, 5, 7]             // Diagonals
+    ];
 
-}
-function checkRow2(outerGridId) {
-if (document.getElementById(`${outerGridId.id}.4`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.4`).textContent===document.getElementById(`${outerGridId.id}.6`).textContent)
-    if (document.getElementById(`${outerGridId.id}.4`).textContent!=='')
-        return true;
-
-}
-function checkRow3(outerGridId) {
-    if (document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.8`).textContent && document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.9`).textContent)
-        if (document.getElementById(`${outerGridId.id}.7`).textContent!=='')
-            return true;
-    
+    for (let combination of winningCombinations) {
+        const [a, b, c] = combination.map(i => document.getElementById(i.toString()));
+        if (a.classList.contains('X') && b.classList.contains('X') && c.classList.contains('X')) {
+            console.log("game over");
+            return 'x';
+        }else {
+            console.log(a.classList.contains('X'))
+            console.log(a.classList)
+        }
+        if (a.classList.contains('O') && b.classList.contains('O') && c.classList.contains('O')) {
+            return 'o';
+        }
     }
 
+    return false;
+}
 
-function checkCol1(outerGridId) {
-        if (document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.4`).textContent && document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.7`).textContent)
-            if (document.getElementById(`${outerGridId.id}.1`).textContent!=='')
-                return true;
-        
-        }
- function checkCol2(outerGridId) {
-        if (document.getElementById(`${outerGridId.id}.2`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.2`).textContent===document.getElementById(`${outerGridId.id}.8`).textContent)
-            if (document.getElementById(`${outerGridId.id}.2`).textContent!=='')
-                return true;
-        
-        }
-function checkCol3(outerGridId) {
-            if (document.getElementById(`${outerGridId.id}.3`).textContent===document.getElementById(`${outerGridId.id}.6`).textContent && document.getElementById(`${outerGridId.id}.3`).textContent===document.getElementById(`${outerGridId.id}.9`).textContent)
-                if (document.getElementById(`${outerGridId.id}.3`).textContent!=='')
-                    return true;
-            
-            }
- function checkDia1(outerGridId) {
-        if (document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.1`).textContent===document.getElementById(`${outerGridId.id}.9`).textContent)
-            if (document.getElementById(`${outerGridId.id}.1`).textContent!=='')
-                return true;
-        
-        }
-function checkDia2(outerGridId) {
-            if (document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.5`).textContent && document.getElementById(`${outerGridId.id}.7`).textContent===document.getElementById(`${outerGridId.id}.3`).textContent)
-                if (document.getElementById(`${outerGridId.id}.7`).textContent!=='')
-                    return true;
-            
-            }
+function checkBoxWin(outerGridId) {
+    const cells = [
+        document.getElementById(`${outerGridId.id}.1`).textContent,
+        document.getElementById(`${outerGridId.id}.2`).textContent,
+        document.getElementById(`${outerGridId.id}.3`).textContent,
+        document.getElementById(`${outerGridId.id}.4`).textContent,
+        document.getElementById(`${outerGridId.id}.5`).textContent,
+        document.getElementById(`${outerGridId.id}.6`).textContent,
+        document.getElementById(`${outerGridId.id}.7`).textContent,
+        document.getElementById(`${outerGridId.id}.8`).textContent,
+        document.getElementById(`${outerGridId.id}.9`).textContent
+    ];
+
+    // Check rows
+    if ((cells[0] === cells[1] && cells[1] === cells[2] && cells[0] !== '') ||
+        (cells[3] === cells[4] && cells[4] === cells[5] && cells[3] !== '') ||
+        (cells[6] === cells[7] && cells[7] === cells[8] && cells[6] !== '')) {
+        return true;
+    }
+
+    // Check columns
+    if ((cells[0] === cells[3] && cells[3] === cells[6] && cells[0] !== '') ||
+        (cells[1] === cells[4] && cells[4] === cells[7] && cells[1] !== '') ||
+        (cells[2] === cells[5] && cells[5] === cells[8] && cells[2] !== '')) {
+        return true;
+    }
+
+    // Check diagonals
+    if ((cells[0] === cells[4] && cells[4] === cells[8] && cells[0] !== '') ||
+        (cells[2] === cells[4] && cells[4] === cells[6] && cells[2] !== '')) {
+        return true;
+    }
+
+    return false;
+}
+
 function render() {
     const container = document.getElementById('board');
 
@@ -91,13 +96,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-function checkBoxWin(outerGridId){
-    if (checkRow1(outerGridId)||checkRow2(outerGridId)||checkRow3(outerGridId)|| 
-    checkCol1(outerGridId)||checkCol2(outerGridId) ||checkCol3(outerGridId) || 
-    checkDia1(outerGridId)||checkDia2(outerGridId) ) {
-        return true;
-    }
-}
+
 function isBoxValid(boxId){
     if (validBox!==0){
         if (document.getElementById(validBox).getAttribute('isComplete')==="true"){
@@ -121,25 +120,37 @@ function isBoxValid(boxId){
 
     }
 }
+function blockInvalidBoxes(validBox) {
+    const boxes = document.querySelectorAll('.OuterGrid'); // Assuming .OuterGrid is the class for the grid boxes
+
+    boxes.forEach(box => {
+        if (box.id !== validBox) {
+            box.classList.add('isBlocked');
+        } else {
+            box.classList.remove('isBlocked');
+        }
+    });
+}
+
 
 function checker(event) {
     innerGrid = event.target.id;
-    console.log('innerGrid');
-    console.log(innerGrid);
     outerGridId = event.target.parentElement;
-    console.log(outerGridId);
 
     innerGridId = document.getElementById(`${innerGrid}`)
     console.log(outerGridId.getAttribute('isComplete'))
+   
 
     if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
         innerGridId.textContent = currentPlayer; // Place the current player's mark
         validBox = innerGrid.slice(2);
+        blockInvalidBoxes(validBox);
         console.log("validBox")
         console.log(validBox);
-        
+        console.log(outerGridId)
         if (checkBoxWin(outerGridId)) {
-            console.log(`${innerGridId.textContent} wins`)
+
+          
             outerGridId.setAttribute('isComplete', 'true');
             console.log(outerGridId)
             
@@ -148,13 +159,13 @@ function checker(event) {
             } else {
                 outerGridId.classList.add('O');
             }
-
+            checkGameWin() ;
             // Add grey out class to all inner grids in the completed outer grid
             const innerGrids = outerGridId.querySelectorAll('.InnerGrid');
             innerGrids.forEach(cell => {
                 cell.classList.add('isBlocked');
             });
-
+  
             
 
         }

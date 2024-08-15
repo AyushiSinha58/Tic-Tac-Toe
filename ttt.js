@@ -18,11 +18,11 @@ function checkGameWin() {
         if (a.classList.contains('X') && b.classList.contains('X') && c.classList.contains('X')) {
             console.log("game over");
             return 'x';
-        }else {
-            console.log(a.classList.contains('X'))
-            console.log(a.classList)
         }
+        
         if (a.classList.contains('O') && b.classList.contains('O') && c.classList.contains('O')) {
+            console.log("game over");
+
             return 'o';
         }
     }
@@ -98,6 +98,7 @@ document.addEventListener('keydown', function(event) {
 
 
 function isBoxValid(boxId){
+
     if (validBox!==0){
         if (document.getElementById(validBox).getAttribute('isComplete')==="true"){
             console.log(1);

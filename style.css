@@ -72,30 +72,6 @@ body {
     pointer-events: none; 
     z-index: 2;
 }
-
-.ChecheckBoxWin {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 5rem;
-    font-weight: bold;
-    color: rgba(255, 0, 0, 0.7); 
-    pointer-events: none; 
-    z-index: -1
-} 
-
-.ChecheckBoxWin ::after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 5rem; /* Adjust size as needed */
-    font-weight: bold;
-    color: rgba(255, 0, 0, 0.7); /* Semi-transparent red for example */
-    pointer-events: none; 
-}
-
 .InnerGrid {
     cursor: pointer;
     background-color: rgba(149, 15, 15, 0.8);

@@ -93,17 +93,20 @@ function render() {
 function startpage(){}
 function endpage(winner){
     console.log(winner)
-    const container = document.getElementById('board');
-    container.innerHTML = ''
+    const container = document.body;
+
+    gray=document.createElement('div');
+    gray.classList.add('gray');
+
     win=document.createElement('div');
     win.classList.add('winner');
     win.textContent=`${winner} wins`
 
     button=document.createElement('button');
     button.classList.add(`restartButton`);
-    
+  
+    container.appendChild(gray)
     container.appendChild(win)
-
     container.appendChild(button)
 }
 document.addEventListener('keydown', function(event) {
@@ -168,7 +171,7 @@ function checker(event) {
     outerGridId = event.target.parentElement;
     innerGridId = document.getElementById(`${innerGrid}`)
     console.log(outerGridId.getAttribute('isComplete'))
-
+// endpage(`hhh`)
     if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
         innerGridId.textContent = currentPlayer; // Place the current player's mark
         validBox = innerGrid.slice(2);

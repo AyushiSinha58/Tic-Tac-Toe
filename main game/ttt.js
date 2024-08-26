@@ -98,7 +98,13 @@ function endpage(winner){
     win=document.createElement('div');
     win.classList.add('winner');
     win.textContent=`${winner} wins`
+
+    button=document.createElement('button');
+    button.classList.add(`restartButton`);
+    
     container.appendChild(win)
+
+    container.appendChild(button)
 }
 document.addEventListener('keydown', function(event) {
     if (event.key === 'r' || event.key === 'R') {
@@ -162,7 +168,6 @@ function checker(event) {
     outerGridId = event.target.parentElement;
     innerGridId = document.getElementById(`${innerGrid}`)
     console.log(outerGridId.getAttribute('isComplete'))
-   
 
     if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
         innerGridId.textContent = currentPlayer; // Place the current player's mark

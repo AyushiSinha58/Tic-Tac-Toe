@@ -212,3 +212,4 @@ function checker(event) {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switch player
     }
 }
+

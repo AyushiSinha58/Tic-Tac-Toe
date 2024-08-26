@@ -30,13 +30,11 @@ function render() {
         const outerGrid = document.createElement('div');
         outerGrid.className = 'OuterGrid';
         outerGrid.id = outerGridId;
+        outerGrid.setAttribute('isComplete','false');   
+        console.log(outerGrid);
 
-        for (let row = 1; row <= 3; row++) {
-            const innerGridRow = document.createElement('div');
-            innerGridRow.className = 'InnerGridRow';
-            innerGridRow.id = `${outerGridId}.${row}`;
+        for (let num = 1; num <= 9; num++) {
 
-            for (let col = 1; col <= 3; col++) {
                 const innerGrid = document.createElement('div');
                 innerGrid.className = 'InnerGrid';
                 innerGrid.id = `${outerGridId}.${row}.${col}`;
@@ -52,10 +50,6 @@ function render() {
 
                 innerGridRow.appendChild(innerGrid);
             }
-
-            outerGrid.appendChild(innerGridRow);
-        }
-
         container.appendChild(outerGrid);
     }
 }

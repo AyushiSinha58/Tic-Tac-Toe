@@ -96,18 +96,26 @@ function endpage(winner){
     const container = document.body;
 
     gray=document.createElement('div');
+    gray.id=`gray`
     gray.classList.add('gray');
 
     win=document.createElement('div');
     win.classList.add('winner');
     win.textContent=`${winner} wins`
 
-    button=document.createElement('button');
+    button=document.createElement('div');
     button.classList.add(`restartButton`);
-  
+    button.innerHTML=`<button id = "restart" onclick="restart()">restart</button>`
+    gray.appendChild(button)
+    gray.appendChild(win)
     container.appendChild(gray)
-    container.appendChild(win)
-    container.appendChild(button)
+
+}
+function restart(){
+    const container = document.getElementById(`gray`)
+    container.remove()
+    document.getElementById(`board`).innerHTML='';
+    render();
 }
 document.addEventListener('keydown', function(event) {
     if (event.key === 'r' || event.key === 'R') {

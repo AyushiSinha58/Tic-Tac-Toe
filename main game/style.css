@@ -129,15 +129,23 @@ body {
     transform: translate(-50%, -50%);
     font-size: 5rem;
     font-weight: bold;
-    color: rgba(0, 0, 255, 0.7); /* Blue color for O */
+    color: #60240c;
     pointer-events: none; 
     z-index: 999 ;
 }
-.restartButton button {
+
+.restartButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    margin-top: 33%;
+}
+.restartButton button{
     position: relative;
     
     overflow: hidden;
-    padding: 10px 20px;
+    padding: 10px 500px;
     font-size: 16px;
     
     cursor: pointer;
@@ -147,8 +155,8 @@ body {
     
     color: #f3e5ab;
 
-    z-index: 2;
-
+    z-index: 999;
+    background-color: #ff80ff; 
     transition: color 400ms ease-in-out;
 }
 
@@ -166,7 +174,7 @@ body {
     width: 200%;
     height: 100%;
     
-    background: linear-gradient(to left, #600c60, #aaffaa);
+    background: linear-gradient(to left, #60240c, #aaffaa);
     
     z-index: -1;
 

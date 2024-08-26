@@ -111,3 +111,15 @@ body {
     transition: background-color 200ms ease-in-out;
     background-color: rgba(255, 0, 153, 0.87);
 }
+.winner {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba(0, 0, 255, 0.7); /* Blue color for O */
+    pointer-events: none; 
+    z-index: 2;
+}

@@ -17,11 +17,13 @@ function checkGameWin() {
         const [a, b, c] = combination.map(i => document.getElementById(i.toString()));
         if (a.classList.contains('X') && b.classList.contains('X') && c.classList.contains('X')) {
             console.log("game over");
+            endpage(`x`);
             return 'x';
         }
         
         if (a.classList.contains('O') && b.classList.contains('O') && c.classList.contains('O')) {
             console.log("game over");
+            endpage(`o`);
 
             return 'o';
         }
@@ -88,7 +90,16 @@ function render() {
         container.appendChild(outerGrid);
     }
 }
-
+function startpage(){}
+function endpage(winner){
+    console.log(winner)
+    const container = document.getElementById('board');
+    container.innerHTML = ''
+    win=document.createElement('div');
+    win.classList.add('winner');
+    win.textContent=`${winner} wins`
+    container.appendChild(win)
+}
 document.addEventListener('keydown', function(event) {
     if (event.key === 'r' || event.key === 'R') {
         event.preventDefault();
@@ -149,7 +160,6 @@ function blockInvalidBoxes(validBox) {
 function checker(event) {
     innerGrid = event.target.id;
     outerGridId = event.target.parentElement;
-
     innerGridId = document.getElementById(`${innerGrid}`)
     console.log(outerGridId.getAttribute('isComplete'))
    

@@ -236,7 +236,6 @@ body {
     left: 0;
     height: 100px;
     animation: moveLeft 5s ease-out forwards; /* Move from right to left */
-    animation-delay: 1s;
 }
 @keyframes moveLeft {
     0% {

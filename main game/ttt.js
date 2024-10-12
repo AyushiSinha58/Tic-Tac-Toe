@@ -126,6 +126,7 @@ function endpage(winner){
     container.appendChild(gray)
 
 
+
 }
 function restart(){
     const container = document.getElementById(`gray`)

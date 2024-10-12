@@ -189,15 +189,24 @@ function blockInvalidBoxes(validBox) {
         }
     });
 }
+
+let dynamicAudios = [];
 function music(){
-    var x = document.getElementById("background_theme"); 
-    x.pause()
+    dynamicAudios.forEach(audio => {
+        audio.pause();
+    });
+    dynamicAudios = [];
+    x = document.getElementById("background_theme");
+    x.pause();
     var audio = new Audio("../Wallpaper/i-just-want-to-be-part-of-your-symphony!-made-with-Voicemod-[AudioTrimmer.com].mp3");
     audio.volume = 0.3;
+    audio.addEventListener('ended', () => { 
+        x.play(); 
+    });
     audio.play();
-    x.play;
-    
+    dynamicAudios.push(audio);
 }
+
 function confettee(event){
     music();
     const rect = event.target.getBoundingClientRect();
@@ -216,7 +225,6 @@ function confettee(event){
 }
 function checker(event) { 
     confettee(event)
-    endpage("W")
     innerGrid = event.target.id;
     outerGridId = event.target.parentElement;
     innerGridId = document.getElementById(`${innerGrid}`)

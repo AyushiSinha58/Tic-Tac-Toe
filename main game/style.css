@@ -189,3 +189,10 @@ body {
 .rainbow {
     
 }
+
+.rainbow-rectangle {
+    height: 100px;
+    width: 0;
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    transition: width 5s ease-out;
+}

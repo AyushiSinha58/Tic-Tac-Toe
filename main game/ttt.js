@@ -211,6 +211,7 @@ function confettee(event){
     );
 }
 function checker(event) { 
+    add_rainbow()
     confettee(event)
     innerGrid = event.target.id;
     outerGridId = event.target.parentElement;
@@ -258,3 +259,11 @@ function checker(event) {
     }
 }
 
+function add_rainbow(){
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('rainbow-rectangle');
+    document.body.appendChild(newDiv);
+    setTimeout(() => {
+        newDiv.style.width = '100%';
+    }, 500)
+}

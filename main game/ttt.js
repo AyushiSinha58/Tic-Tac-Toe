@@ -110,6 +110,7 @@ function endpage(winner){
     gray=document.createElement('div');
     gray.id=`gray`
     gray.classList.add('gray');
+    add_rainbow1(gray);
 
     win=document.createElement('div');
     win.classList.add('winner');
@@ -118,9 +119,12 @@ function endpage(winner){
     button=document.createElement('div');
     button.classList.add(`restartButton`);
     button.innerHTML=`<button id = "restart" onclick="restart()">restart</button>`
-    gray.appendChild(button)
     gray.appendChild(win)
+    add_rainbow2(gray);
+    gray.appendChild(button)
+
     container.appendChild(gray)
+
 
 }
 function restart(){
@@ -210,8 +214,8 @@ function confettee(event){
     );
 }
 function checker(event) { 
-    add_rainbow()
     confettee(event)
+    endpage("W")
     innerGrid = event.target.id;
     outerGridId = event.target.parentElement;
     innerGridId = document.getElementById(`${innerGrid}`)
@@ -258,11 +262,32 @@ function checker(event) {
     }
 }
 
-function add_rainbow(){
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('rainbow-rectangle');
-    document.body.appendChild(newDiv);
+function add_rainbow1(greybox){
+    const newDiv1 = document.createElement('div');
+    newDiv1.classList.add('rainbow-rectangle-top');
+    greybox.appendChild(newDiv1);
     setTimeout(() => {
-        newDiv.style.width = '100%';
+        newDiv1.style.width = '100%';
     }, 500)
+}
+function add_rainbow2(greybox){
+    const newDiv2 = document.createElement('div');
+    newDiv2.classList.add('rainbow-rectangle-bottom');
+    greybox.appendChild(newDiv2);
+
+    const track = document.createElement('div');
+    track.classList.add('track');
+    greybox.appendChild(track);
+
+
+    const img = document.createElement('img');
+    img.src = "../Wallpaper/WhatsApp_Image_2024-10-12_at_18.21.14_ae52ad85-removebg-preview(1).png"; 
+    img.classList.add('moving-image-left');
+    track.appendChild(img);
+
+    setTimeout(() => {
+        newDiv2.style.width = '100%'; 
+        img.style.animation = 'moveLeft 5s ease-out forwards'; 
+    }, 500); 
+
 }

@@ -131,7 +131,8 @@ body {
     font-weight: bold;
     color: #60240c;
     pointer-events: none; 
-    z-index: 999 ;
+    margin-bottom: 20px; /* Add margin below text */
+    z-index: 100 ;
 }
 
 .restartButton{
@@ -139,7 +140,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%; 
-    margin-top: 33%;
+    margin-top: 25%;
 }
 .restartButton button{
     position: relative;
@@ -185,9 +186,48 @@ body {
     left: 0;
 }
 
-.rainbow-rectangle {
+.rainbow-rectangle-top {
     height: 100px;
     width: 0;
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background: linear-gradient(180deg, red, orange, yellow, green, blue, indigo, violet);
     transition: width 5s ease-out;
+    position: relative;
+    z-index:100;
+    transform-origin: left;
+    margin-top: 10%;
+
+}
+.rainbow-rectangle-bottom {
+    margin-top: 15%;
+
+    height: 100px;
+    width: 0;
+    background: linear-gradient(0deg, red, orange, yellow, green, blue, indigo, violet);
+    transition: width 5s ease-out;
+    z-index:100;
+    position: absolute;
+    right: 0;
+    transform-origin: right;
+}
+.track {
+    position: absolute;
+    margin-top:15%;
+    right: 0;
+    height: 100px;
+    width: 100%; /* Full width */
+    z-index: 150; /* Ensure it’s above the rainbow rectangle */
+}
+.moving-image-left {
+    position: absolute;
+    right: 0;
+    height: 100px;
+    animation: moveLeft 5s ease-out forwards; /* Move from right to left */
+}
+@keyframes moveLeft {
+    0% {
+        right: 0; /* Start at the right */
+    }
+    100% {
+        right: 100%; /* Move to the left end */
+    }
 }

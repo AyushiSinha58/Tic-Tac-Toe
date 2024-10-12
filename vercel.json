@@ -1,0 +1,9 @@
+{
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/main%20game/tictactoe.html"
+      }
+    ]
+  }
+  

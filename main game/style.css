@@ -209,7 +209,15 @@ body {
     right: 0;
     transform-origin: right;
 }
-.track {
+.track2 {
+    position: absolute;
+    margin-top:-10%;
+    right: 0;
+    height: 100px;
+    width: 100%; /* Full width */
+    z-index: 150; /* Ensure it’s above the rainbow rectangle */
+}
+.track1 {
     position: absolute;
     margin-top:15%;
     right: 0;
@@ -221,7 +229,14 @@ body {
     position: absolute;
     right: 0;
     height: 100px;
+    animation: moveLeft 5s ease-out forwards;
+}
+.moving-image-right {
+    position: absolute;
+    left: 0;
+    height: 100px;
     animation: moveLeft 5s ease-out forwards; /* Move from right to left */
+    animation-delay: 1s;
 }
 @keyframes moveLeft {
     0% {
@@ -229,5 +244,13 @@ body {
     }
     100% {
         right: 100%; /* Move to the left end */
+    }
+}
+@keyframes moveRight {
+    0% {
+        left: 0; /* Start at the right */
+    }
+    100% {
+        left: 100%; /* Move to the left end */
     }
 }

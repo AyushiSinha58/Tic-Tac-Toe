@@ -1,8 +1,9 @@
 {
+  "root": "startpage",
     "rewrites": [
       {
         "source": "/",
-        "destination": "/startpage/intro.html"
+        "destination": "/intro.html"
       }
     ]
   }

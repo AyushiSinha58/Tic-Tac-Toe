@@ -259,11 +259,27 @@ function checker(event) {
     }
 }
 
-function add_rainbow(){
+// function add_rainbow(){
+//     const newDiv = document.createElement('div');
+//     newDiv.classList.add('rainbow-rectangle');
+//     document.body.appendChild(newDiv);
+//     setTimeout(() => {
+//         newDiv.style.width = '100%';
+//     }, 500)
+// }
+
+function add_rainbow() {
     const newDiv = document.createElement('div');
     newDiv.classList.add('rainbow-rectangle');
+
+    newDiv.style.height = '100px';  
+    newDiv.style.width = '0';  
+    newDiv.style.backgroundImage = 'linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet)';
+    newDiv.style.transition = 'width 2s ease';  
+
     document.body.appendChild(newDiv);
+
     setTimeout(() => {
         newDiv.style.width = '100%';
-    }, 500)
+    }, 500);
 }

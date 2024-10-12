@@ -281,7 +281,7 @@ function add_rainbow1(greybox){
     greybox.appendChild(track);
     
     const img = document.createElement('img');
-    img.src = "../Wallpaper/Screenshot 2024-10-12 183344.png"; 
+    img.src = "../Wallpaper/Cow.png"; 
     img.classList.add('moving-image-right');
     track.appendChild(img);
 
@@ -300,7 +300,7 @@ function add_rainbow2(greybox){
     greybox.appendChild(track);
 
     const img = document.createElement('img');
-    img.src = "../Wallpaper/WhatsApp_Image_2024-10-12_at_18.21.14_ae52ad85-removebg-preview(1).png"; 
+    img.src = "../Wallpaper/Dolphin.png"; 
     img.classList.add('moving-image-left');
     track.appendChild(img);
 

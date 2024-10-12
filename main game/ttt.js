@@ -23,8 +23,8 @@ function checkGameWin() {
         
         if (a.classList.contains('O') && b.classList.contains('O') && c.classList.contains('O')) {
             console.log("game over");
+            confetti();
             endpage(`o`);
-
             return 'o';
         }
     }
@@ -92,6 +92,18 @@ function render() {
 }
 function startpage(){}
 function endpage(winner){
+    const rect = event.target.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2; 
+    confetti(options={
+        particleCount: 100, 
+        angle: 90,         
+        spread: 360,
+        gravity: 0.9  ,
+        startVelocity :45,
+        decay:0.9,
+    }
+    );
     console.log(winner)
     const container = document.body;
 
@@ -172,14 +184,38 @@ function blockInvalidBoxes(validBox) {
         }
     });
 }
-
-
-function checker(event) {
+function music(){
+    var x = document.getElementById("background_theme"); 
+    x.pause()
+    var audio = new Audio("../Wallpaper/i-just-want-to-be-part-of-your-symphony!-made-with-Voicemod-[AudioTrimmer.com].mp3");
+    audio.volume = 0.3;
+    audio.play();
+    x.play;
+    
+}
+function confettee(event){
+    music();
+    const rect = event.target.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2; 
+    confetti(options={
+        particleCount: 100, 
+        angle: 90,         
+        spread: 360,
+        gravity: 0.6  ,
+        startVelocity :35,
+        decay:0.75,
+        origin: { x: x / window.innerWidth, y: y / window.innerHeight }
+    }
+    );
+}
+function checker(event) { 
+    confettee(event)
     innerGrid = event.target.id;
     outerGridId = event.target.parentElement;
     innerGridId = document.getElementById(`${innerGrid}`)
     console.log(outerGridId.getAttribute('isComplete'))
-// endpage(`hhh`)
+    // endpage(`hhh`)
     if (innerGridId.textContent === '' && isBoxValid(outerGridId.id)) { // Check if cell is empty
         innerGridId.textContent = currentPlayer; // Place the current player's mark
         validBox = innerGrid.slice(2);

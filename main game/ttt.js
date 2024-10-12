@@ -267,9 +267,20 @@ function add_rainbow1(greybox){
     const newDiv1 = document.createElement('div');
     newDiv1.classList.add('rainbow-rectangle-top');
     greybox.appendChild(newDiv1);
+
+    const track = document.createElement('div');
+    track.classList.add('track2');
+    greybox.appendChild(track);
+    
+    const img = document.createElement('img');
+    img.src = "../Wallpaper/Screenshot 2024-10-12 183344.png"; 
+    img.classList.add('moving-image-right');
+    track.appendChild(img);
+
     setTimeout(() => {
-        newDiv1.style.width = '100%';
-    }, 500)
+        newDiv1.style.width = '100%'; 
+        img.style.animation = 'moveRight 5s ease-out forwards'; 
+    }, 500); 
 }
 function add_rainbow2(greybox){
     const newDiv2 = document.createElement('div');
@@ -277,10 +288,8 @@ function add_rainbow2(greybox){
     greybox.appendChild(newDiv2);
 
     const track = document.createElement('div');
-    track.classList.add('track');
+    track.classList.add('track1');
     greybox.appendChild(track);
-//hello
-
 
     const img = document.createElement('img');
     img.src = "../Wallpaper/WhatsApp_Image_2024-10-12_at_18.21.14_ae52ad85-removebg-preview(1).png"; 

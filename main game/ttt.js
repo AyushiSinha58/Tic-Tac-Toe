@@ -117,10 +117,11 @@ function endpage(winner){
 
     button=document.createElement('div');
     button.classList.add(`restartButton`);
-    button.innerHTML=`<button id = "restart" onclick="restart()">restart</button>`
+    button.innerHTML=`<button id = "restart" onclick="restart()">RESTART</button>`
     gray.appendChild(button)
     gray.appendChild(win)
     container.appendChild(gray)
+
 
 }
 function restart(){

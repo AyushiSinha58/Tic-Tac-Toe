@@ -279,6 +279,7 @@ function add_rainbow2(greybox){
     const track = document.createElement('div');
     track.classList.add('track');
     greybox.appendChild(track);
+//hello
 
 
     const img = document.createElement('img');

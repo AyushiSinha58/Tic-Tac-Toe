@@ -68,7 +68,24 @@ function checkBoxWin(outerGridId) {
     return false;
 }
 
+function add_black(){
+    black=document.createElement('div');
+    black.id=`black`
+    black.classList.add('black');
+
+    button=document.createElement('div');
+    button.classList.add(`playButton`);
+    button.innerHTML=`<button id = "play" onclick="play()"><img src="../Wallpaper/play.png" alt="Play Button" class="play-button-image"></button>`
+
+    black.appendChild(button);
+    document.body.appendChild(black);
+}
+function play(){
+    const gray = document.getElementById('black'); 
+    black.remove();
+}
 function render() {
+    add_black();
     const container = document.getElementById('board');
 
     for (let outerGridId = 1; outerGridId <= 9; outerGridId++) {
@@ -95,7 +112,7 @@ function endpage(winner){
     const rect = event.target.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2; 
-    confetti(options={
+    confettee(options={
         particleCount: 100, 
         angle: 90,         
         spread: 360,
@@ -225,7 +242,6 @@ function confettee(event){
 }
 function checker(event) { 
     confettee(event)
-    endpage("n")
     innerGrid = event.target.id;
     outerGridId = event.target.parentElement;
     innerGridId = document.getElementById(`${innerGrid}`)
